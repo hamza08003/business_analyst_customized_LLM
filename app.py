@@ -3,6 +3,7 @@ import pandas as pd
 from services.pdf_processor import process_pdf
 from services.website_processor import process_website
 from services.vectorizer import create_embeddings_and_vector_store
+from utils.pdf_displayer import displayPDF
 from utils.questions import porters_five_forces, systemic_thinking, cynefin_framework
 from services.query_model import query_gemini_model
 from utils.report_generator import generate_pdf_report
@@ -31,6 +32,7 @@ with st.container():
     website_url = st.text_input("Website URL", key="website_input")
     startup_name = st.text_input("Startup Name", key="startup_name")
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 if st.button("Analyze", use_container_width=True):
@@ -114,9 +116,10 @@ if st.button("Analyze", use_container_width=True):
         
 # PDF generation and download
 if st.session_state['results']:
-    if st.button("Download Report", use_container_width=True):
-        report_data = generate_pdf_report(st.session_state['results'], st.session_state['startup_name'])
-        st.download_button("Download PDF", data=report_data, file_name=f"{st.session_state['startup_name']}_Report.pdf", mime="application/pdf", use_container_width=True)
+    # if st.button("Download Report", use_container_width=True):
+        report_data_bytes = generate_pdf_report(st.session_state['results'], st.session_state['startup_name'])
+        displayPDF(report_data_bytes)
+        # st.download_button("Download PDF", data=report_data, file_name=f"{st.session_state['startup_name']}_Report.pdf", mime="application/pdf", use_container_width=True)
 
 
 # Button to Restart the app
