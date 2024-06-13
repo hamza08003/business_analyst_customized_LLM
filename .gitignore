@@ -1,4 +1,4 @@
 .idea/
 .env
 test.py
-utils/__pycache/
+utils/__pycache__/
