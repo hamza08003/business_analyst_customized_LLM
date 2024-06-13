@@ -4,7 +4,7 @@ from services.pdf_processor import process_pdf
 from services.website_processor import process_website
 from services.vectorizer import create_embeddings_and_vector_store
 from utils.questions import porters_five_forces, systemic_thinking, cynefin_framework
-from services.query_model import query_model
+from services.query_model import query_gemini_model
 from utils.report_generator import generate_pdf_report
 import time
 
@@ -75,10 +75,10 @@ if st.button("Analyze", use_container_width=True):
                     # Check if the question is a rating question
                     if "Rating" in question_text:
                         # Modify the prompt for rating questions
-                        response = query_model(f"Given the context: {context}, answer the following question \n\n {question_prompt}")
+                        response = query_gemini_model(f"Given the context: {context}, answer the following question \n\n {question_prompt}")
                     else:
                         # Use separate prompt for other questions
-                        response = query_model(f"Given the context: {context}, answer the following question short to the point (no more than 300 words):\n\n {question_prompt}")
+                        response = query_gemini_model(f"Given the context: {context}, answer the following question short to the point (no more than 300 words):\n\n {question_prompt}")
 
                     results.append((analysis_type, question_text, response))
 
@@ -95,7 +95,7 @@ if st.button("Analyze", use_container_width=True):
         # Generate conclusion based on all results
         all_responses = " ".join([response for _, _, response in results])
         conclusion_prompt = f"Based on the following analysis results, provide a comprehensive conclusion for this startup:\n\n{all_responses}"
-        conclusion = query_model(conclusion_prompt)
+        conclusion = query_gemini_model(conclusion_prompt)
         results.append(("Conclusion", "Conclusion", conclusion))
 
         # Store results in session state
