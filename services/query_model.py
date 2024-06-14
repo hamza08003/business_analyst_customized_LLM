@@ -15,7 +15,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 def query_gemini_model(prompt):
     model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(prompt)
-    return response.candidates[0].content.parts[0].text
+    return response.candidates[0].content.parts[0].text.replace("*", "")
 
 
 # Function to query the model with the question related to the data
