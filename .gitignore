@@ -3,3 +3,4 @@
 test.py
 utils/__pycache__/
 services/__pycache__/
+*.log
