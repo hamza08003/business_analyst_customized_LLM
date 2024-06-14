@@ -2,7 +2,7 @@ porters_five_forces = {
     "Core problem blockchain is solving": "Identify the primary challenge the given bloackchain startup is addressing.",
     "MVP for blockchain solution.": "Describe the minimum viable product (MVP) for this blockchain solution. How does the MVP differentiate the startup from existing solutions?",
     "Token economics in various market scenarios": "For this startup, how can the token economics be realistically tested in various market scenarios? What strategies can be employed to evaluate token economics under different market conditions?.",
-    "porters_five_forces Rating": "On a scale of 1 to 10, how competitive do you perceive the market environment for this blockchain startup, where 1 is not competitive at all and 10 is highly competitive? ."
+    "porters_five_forces Rating": "On a scale of 1 to 10, how competitive do you perceive the market environment for this blockchain startup, where 1 is not competitive at all and 10 is highly competitive? Just estimate and give rating value, don't write anything else."
 }
 
 systemic_thinking = {

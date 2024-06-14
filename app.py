@@ -96,7 +96,7 @@ if st.button("Analyze", use_container_width=True):
 
         # Generate conclusion based on all results
         all_responses = " ".join([response for _, _, response in results])
-        conclusion_prompt = f"Based on the following analysis results, provide a comprehensive conclusion for this startup:\n\n{all_responses}"
+        conclusion_prompt = f"Based on the following analysis results, provide a short to the point conclusion for this startup:\n\n{all_responses}"
         conclusion = query_gemini_model(conclusion_prompt)
         results.append(("Conclusion", "Conclusion", conclusion))
 
